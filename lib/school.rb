@@ -1,10 +1,11 @@
-class School 
-  attr_accessor :roster, :student, :grade
+require 'pry'
+
+class School
+  attr_accessor :roster, :student , :grade
   
   def initialize(name)
     @name = name
-    @roster = roster
-    @roster = {}
+    @roster = Hash.new
   end 
   
   def add_student(student, grade)
@@ -15,17 +16,15 @@ class School
       roster[grade] << student
     end
   end
+
   
   def grade(grade)
-    roster[grade]
+    @roster[grade]
   end 
+
   
   def sort 
-    sort_hash = {}
-    roster.each do |k, v| 
-      sort_hash[k] = v.sort 
-    end 
-      sort_hash
+    @roster.sort_by.to_h {|key, value| value}
   end 
   
-end
+end 
